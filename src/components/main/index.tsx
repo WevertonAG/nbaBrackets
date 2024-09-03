@@ -1,6 +1,6 @@
 //import Card from '../card';
 import Card from '../card';
-import UploadForm from '../forms';
+//import UploadForm from '../forms';
 
 //import Tables from '../table';
 import * as S  from './styles'
@@ -11,7 +11,7 @@ const Main = ()=>{
     <S.container>
        <S.content>
         {/*<Tables/>
-         <UploadForm/>
+         <UploadForm/>S
         */}<Card/>
        </S.content>
     </S.container>

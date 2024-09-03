@@ -3,7 +3,7 @@ import * as S from './styles';
 
 interface FormData {
   name: string;
-  imageBase64: string | null;
+  logo: string | null;
   titlesCount: string;
   isActive: boolean;
 }
@@ -11,7 +11,7 @@ interface FormData {
 const UploadForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
-    imageBase64: null,
+    logo: null,
     titlesCount: "",
     isActive: false,
   });
@@ -23,7 +23,7 @@ const UploadForm: React.FC = () => {
       reader.onloadend = () => {
         setFormData(prevState => ({
           ...prevState,
-          imageBase64: reader.result as string
+          logo: reader.result as string
         }));
       };
       reader.readAsDataURL(file);
