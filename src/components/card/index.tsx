@@ -13,12 +13,11 @@ const Card = () => {
     const getAllTeams = async () => {
       const response = await axios.get('http://localhost:8080/api/teams');
       setAllTeams(response.data);
-      console.log("aqui é os dados");
-      console.log(response.data);
     }
     getAllTeams()
-
   }, [])
+
+  
   console.log(allTeams);
 
   return (

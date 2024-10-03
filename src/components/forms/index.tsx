@@ -6,6 +6,7 @@ interface FormData {
   logo: string | null;
   titlesCount: string;
   isActive: boolean;
+  conference: string;
 }
 
 const UploadForm: React.FC = () => {
@@ -14,6 +15,7 @@ const UploadForm: React.FC = () => {
     logo: null,
     titlesCount: "",
     isActive: false,
+    conference: "",
   });
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -81,6 +83,13 @@ const UploadForm: React.FC = () => {
           onChange={handleChange}
         />
       </label>
+      <input
+        type="text"
+        name="conference"
+        value={formData.conference}
+        onChange={handleChange}
+        placeholder="conferencia"
+        />
       <button onClick={handleSubmit}>Enviar Formulário</button>
     </S.container>
   );

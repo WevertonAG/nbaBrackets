@@ -11,7 +11,6 @@ interface Teams {
 const INITIAL_STATE : Teams[] = [
   {name: "lakers", logo: "",titlesCount: 0, win: false},
   {name: "Bucks", logo: "", titlesCount: 0,win: false},
-  {name: "Warriors", logo: "",titlesCount: 0, win: false},
 ]
 
 
