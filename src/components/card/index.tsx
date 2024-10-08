@@ -1,36 +1,34 @@
 import * as S from './styles';
-import { useSelector } from 'react-redux';
-import { useTeams } from '../../redux/sliceTeams';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-
 
 const Card = () => {
-  const teams = useSelector(useTeams)
-  const [allTeams, setAllTeams] = useState(teams)
-
-  useEffect(() => {
-    const getAllTeams = async () => {
-      const response = await axios.get('http://localhost:8080/api/teams');
-      setAllTeams(response.data);
-    }
-    getAllTeams()
-  }, [])
-
   
-  console.log(allTeams);
-
+  const team1 = {
+    name: "Team 1",
+    logo: "",
+    titlesCount:0,
+  }
+  const team2= {
+    name: "Team 2",
+    logo: "",
+    titlesCount:1,
+  }
   return (
 
     <S.card>
-      {allTeams ? allTeams.map((a: { name: string, logo: string,titlesCount: number, win: boolean }) =>
+      
         <S.team>
           <S.circle>
-            <S.teamLogo src={a.logo} alt="Logo do time" />
+            <S.teamLogo src={team1.logo} alt="Logo do time" />
           </S.circle>
-          <S.nameTeam>{a.name}   {a.titlesCount}</S.nameTeam>
-          <p>{a.win}</p>
-        </S.team>): null}
+          <S.nameTeam>{team1.name}   {team1.titlesCount}</S.nameTeam>
+        </S.team>
+        <S.hr/>
+        <S.team>
+          <S.circle>
+            <S.teamLogo src={team2.logo} alt="Logo do time" />
+          </S.circle>
+          <S.nameTeam>{team2.name}   {team2.titlesCount}</S.nameTeam>
+        </S.team>
     </S.card>
 
   )
