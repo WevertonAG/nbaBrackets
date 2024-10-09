@@ -1,37 +1,31 @@
 import * as S from './styles';
+import Team from '../team';
 
-const Card = () => {
+
+interface Team {
+  name: string
+  logo: string
+  titlesCount: number
+  win: boolean
+  conference:string
+
+}
+type Props ={
+  team1?: Team | any,
+  team2?: Team | any
+}
+
+const Card = ({ team1, team2 }: Props) =>{
   
-  const team1 = {
-    name: "Team 1",
-    logo: "",
-    titlesCount:0,
-  }
-  const team2= {
-    name: "Team 2",
-    logo: "",
-    titlesCount:1,
-  }
   return (
 
     <S.card>
-      
-        <S.team>
-          <S.circle>
-            <S.teamLogo src={team1.logo} alt="Logo do time" />
-          </S.circle>
-          <S.nameTeam>{team1.name}   {team1.titlesCount}</S.nameTeam>
-        </S.team>
-        <S.hr/>
-        <S.team>
-          <S.circle>
-            <S.teamLogo src={team2.logo} alt="Logo do time" />
-          </S.circle>
-          <S.nameTeam>{team2.name}   {team2.titlesCount}</S.nameTeam>
-        </S.team>
+      <Team logo={team1?.logo} name={team1?.name} titlesCount={team1?.titlesCount} />
+      <S.hr />
+      <Team logo={team2?.logo} name={team2?.name} titlesCount={team2?.titlesCount} />
     </S.card>
 
-  )
+  );
 
 }
 export default Card;

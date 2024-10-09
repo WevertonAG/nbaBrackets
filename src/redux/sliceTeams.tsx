@@ -6,11 +6,12 @@ interface Teams {
   logo: string
   titlesCount: number
   win: boolean
+  conference:string
 }
 
 const INITIAL_STATE : Teams[] = [
-  {name: "lakers", logo: "",titlesCount: 0, win: false},
-  {name: "Bucks", logo: "", titlesCount: 0,win: false},
+  {name: "lakers", logo: "",titlesCount: 0, win: false, conference:'west'},
+  {name: "Bucks", logo: "", titlesCount: 0,win: false, conference:'east'},
 ]
 
 
@@ -20,7 +21,7 @@ const sliceTeams = createSlice({
   initialState: INITIAL_STATE,
   reducers:{
     addTeams(state, {payload}: PayloadAction<string>){
-      return [...state, {name: payload,logo: payload ,titlesCount: payload, win: false}]
+      return [...state, {name: payload,logo: payload ,titlesCount: payload, win: false,conference:payload}]
     },
   },
 
