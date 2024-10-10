@@ -6,10 +6,21 @@ import axios from "axios";
 import { useTeams } from "../../redux/sliceTeams";
 import Finals from "../../assets/logosNba/finals.png";
 
+interface Team {
+  name: string;
+  logo: string;
+  titlesCount: number;
+  active: boolean;
+  conference: string;
+}
+
 const Bracket = () => {
   const teams = useSelector(useTeams);
   const [allTeams, setAllTeams] = useState(teams);
-  const [win, setWin] = useState(false);
+  const [oitavas, setOitavas] = useState<Team[] | null>([]);
+  const [semi, setSemi] = useState<Team[] | null>([]);
+  const [finalC, setFinalC] = useState<Team[] | null>([]);
+  const [final, setFinal] = useState<Team[] | null>([]);
 
   useEffect(() => {
     const getAllTeams = async () => {
@@ -45,38 +56,132 @@ const Bracket = () => {
   const team15 = eastConference.find((e) => e.name == "pacers");
   const team16 = eastConference.find((e) => e.name == "heat");
 
+  const goNext = (
+    team: Team,
+    position: number,
+    conference: string,
+    fase: string
+  ) => {
+    if (!team.name) {
+      return;
+    }
+
+    if (fase == "oitavas") {
+      const vaiPro = oitavas;
+      vaiPro[position] = team;
+      setOitavas([...vaiPro]);
+      setSemi([]);
+    }
+    if (fase == "semi") {
+      const vaiPro = semi;
+      vaiPro[position] = team;
+      setSemi([...vaiPro]);
+      setFinalC([]);
+    }
+    if (fase == "finalC") {
+      const vaiPro = finalC;
+      vaiPro[position] = team;
+      setFinalC([...vaiPro]);
+    }
+    if (fase == "final") {
+      const vaiPro = final;
+      vaiPro[position] = team;
+      setFinal([...vaiPro]);
+    }
+  };
+
   return (
     <S.brackContent>
       <S.bracket>
-        <Card team1={team1} team2={team2} />
-        <Card team1={team3} team2={team4} />
-        <Card team1={team5} team2={team6} />
-        <Card team1={team7} team2={team8} />
+        <Card
+          team1={team1}
+          team2={team2}
+          handleClickTeam={(team) => goNext(team, 0, "oeste", "oitavas")}
+        />
+        <Card
+          team1={team3}
+          team2={team4}
+          handleClickTeam={(team) => goNext(team, 1, "", "oitavas")}
+        />
+        <Card
+          team1={team5}
+          team2={team6}
+          handleClickTeam={(team) => goNext(team, 2, "", "oitavas")}
+        />
+        <Card
+          team1={team7}
+          team2={team8}
+          handleClickTeam={(team) => goNext(team, 3, "", "oitavas")}
+        />
       </S.bracket>
       <S.bracket>
-        <Card team1={team1} team2={team3} />
-        <Card team1={team6} team2={team8} />
+        <Card
+          team1={oitavas[0]}
+          team2={oitavas[1]}
+          handleClickTeam={(team) => goNext(team, 0, "", "semi")}
+        />
+        <Card
+          team1={oitavas[2]}
+          team2={oitavas[3]}
+          handleClickTeam={(team) => goNext(team, 1, "", "semi")}
+        />
       </S.bracket>
       <S.bracket>
-        <Card team1={team1} team2={team8} />
+        <Card
+          team1={semi[0]}
+          team2={semi[1]}
+          handleClickTeam={(team) => goNext(team, 0, "", "finalC")}
+        />
       </S.bracket>
 
       <S.final>
         <S.finals src={Finals} />
-        <Card team1={team1} team2={team13} />
+        <Card
+          team1={finalC[0]}
+          team2={finalC[1]}
+          handleClickTeam={(team) => goNext(team, 0, "", "final")}
+        />
       </S.final>
       <S.bracket>
-        <Card team1={team10} team2={team13} />
+        <Card
+          team1={semi[2]}
+          team2={semi[3]}
+          handleClickTeam={(team) => goNext(team, 1, "", "finalC")}
+        />
       </S.bracket>
       <S.bracket>
-        <Card team1={team10} team2={team11} />
-        <Card team1={team13} team2={team16} />
+        <Card
+          team1={oitavas[4]}
+          team2={oitavas[5]}
+          handleClickTeam={(team) => goNext(team, 2, "", "semi")}
+        />
+        <Card
+          team1={oitavas[6]}
+          team2={oitavas[7]}
+          handleClickTeam={(team) => goNext(team, 3, "", "semi")}
+        />
       </S.bracket>
       <S.bracket>
-        <Card team1={team9} team2={team10} />
-        <Card team1={team11} team2={team12} />
-        <Card team1={team13} team2={team14} />
-        <Card team1={team15} team2={team16} />
+        <Card
+          team1={team9}
+          team2={team10}
+          handleClickTeam={(team) => goNext(team, 4, "", "oitavas")}
+        />
+        <Card
+          team1={team11}
+          team2={team12}
+          handleClickTeam={(team) => goNext(team, 5, "", "oitavas")}
+        />
+        <Card
+          team1={team13}
+          team2={team14}
+          handleClickTeam={(team) => goNext(team, 6, "", "oitavas")}
+        />
+        <Card
+          team1={team15}
+          team2={team16}
+          handleClickTeam={(team) => goNext(team, 7, "", "oitavas")}
+        />
       </S.bracket>
     </S.brackContent>
   );

@@ -4,13 +4,25 @@ interface Teams {
   name: string;
   logo: string;
   titlesCount: number;
-  win: boolean;
+  active: boolean;
   conference: string;
 }
 
 const INITIAL_STATE: Teams[] = [
-  { name: "lakers", logo: "", titlesCount: 0, win: false, conference: "west" },
-  { name: "Bucks", logo: "", titlesCount: 0, win: false, conference: "east" },
+  {
+    name: "lakers",
+    logo: "",
+    titlesCount: 0,
+    active: false,
+    conference: "west",
+  },
+  {
+    name: "Bucks",
+    logo: "",
+    titlesCount: 0,
+    active: false,
+    conference: "east",
+  },
 ];
 
 const sliceTeams = createSlice({
@@ -24,7 +36,7 @@ const sliceTeams = createSlice({
           name: payload,
           logo: payload,
           titlesCount: payload,
-          win: false,
+          active: false,
           conference: payload,
         },
       ];

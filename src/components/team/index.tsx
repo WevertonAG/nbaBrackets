@@ -1,22 +1,30 @@
 import * as S from "./styles";
 
+interface Team {
+  name: string;
+  logo: string;
+  titlesCount: number;
+  active: boolean;
+  conference: string;
+}
+
 const Team = ({
   logo,
   name,
   titlesCount,
   active,
+  Team,
+  handleSelect,
 }: {
   logo: string;
   name: string;
   titlesCount: number;
   active: boolean;
+  Team: Team;
+  handleSelect: (team: Team) => void;
 }) => {
-  const handleSelect = () => {
-    console.log(logo, name, titlesCount, active, "slave");
-    return (active = true);
-  };
   return (
-    <S.team onClick={handleSelect}>
+    <S.team onClick={() => handleSelect(Team)}>
       <S.circle>
         <S.teamLogo src={logo} />
       </S.circle>
