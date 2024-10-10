@@ -13,8 +13,8 @@ export const header = styled.header`
   color: #24428a;
   .logoBox {
     display: flex;
-    align-items:center; 
-    justify-content:center ;
+    align-items: center;
+    justify-content: center;
     max-width: 250px;
     max-height: 100%;
 
@@ -25,7 +25,7 @@ export const header = styled.header`
   .logo:hover {
     filter: drop-shadow(0 0 2em #24428a);
   }
-  img{
+  img {
     max-width: 200px;
     max-height: 75px;
     width: auto;

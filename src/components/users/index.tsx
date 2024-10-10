@@ -1,4 +1,4 @@
-import * as S from './styles'
+import * as S from "./styles";
 
 const User = () => {
   return (
@@ -7,8 +7,6 @@ const User = () => {
         <S.avatar></S.avatar>
       </S.headCard>
     </>
-  )
-
-
-}
+  );
+};
 export default User;

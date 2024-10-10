@@ -1,6 +1,6 @@
-import { collection, getFirestore } from 'firebase/firestore';
-import {app} from './firebase';
+import { collection, getFirestore } from "firebase/firestore";
+import { app } from "./firebase";
 
-export const firestore =  getFirestore(app);
+export const firestore = getFirestore(app);
 
-export const teamsCollection = collection(firestore, 'teams');
+export const teamsCollection = collection(firestore, "teams");

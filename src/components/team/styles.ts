@@ -1,16 +1,14 @@
 import styled from "styled-components";
 
-export const team = styled.div`
-
-width: 100%;
-height: 100vh;
-margin: 0;
-padding: 0;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-
+export const team = styled.button`
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 export const circle = styled.div`
   width: 50px;
@@ -30,19 +28,18 @@ export const teamLogo = styled.img`
 `;
 
 export const nameTeam = styled.p`
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   font-family: poppins;
   font-weight: 600;
   font-size: 20px;
   color: #fff;
   text-shadow: 0 3px 10px #fff;
-
 `;
 export const titles = styled.p`
-  margin:0;
+  margin: 0;
   margin-right: 10px;
-  padding:0;
+  padding: 0;
   font-family: poppins;
   font-weight: 600;
   font-size: 25px;

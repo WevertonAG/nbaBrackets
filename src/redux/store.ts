@@ -1,11 +1,11 @@
-import {configureStore}from "@reduxjs/toolkit" ;
+import { configureStore } from "@reduxjs/toolkit";
 import sliceTeams from "./sliceTeams";
 import sliceUsers from "./sliceUsers";
 
 const store = configureStore({
-  reducer:{
+  reducer: {
     teams: sliceTeams,
-    users: sliceUsers
+    users: sliceUsers,
   },
 });
 

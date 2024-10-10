@@ -1,16 +1,14 @@
-import Bracket from '../bracket';
+import Bracket from "../bracket";
 
-import * as S from './styles'
+import * as S from "./styles";
 
 const Main = () => {
-
   return (
     <S.container>
       <S.content>
-        <Bracket/>
+        <Bracket />
       </S.content>
     </S.container>
-  )
-
-}
+  );
+};
 export default Main;

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import * as S from './styles';
+import React, { useState } from "react";
+import * as S from "./styles";
 
 interface FormData {
   name: string;
@@ -11,7 +11,7 @@ interface FormData {
 
 const UploadForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
+    name: "",
     logo: null,
     titlesCount: "",
     isActive: false,
@@ -23,28 +23,30 @@ const UploadForm: React.FC = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData(prevState => ({
+        setFormData((prevState) => ({
           ...prevState,
-          logo: reader.result as string
+          logo: reader.result as string,
         }));
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value, type, checked } = event.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const handleSubmit = async () => {
-    const response = await fetch('http://localhost:8080/api/teams', {
-      method: 'POST',
+    const response = await fetch("http://localhost:8080/api/teams", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     });
@@ -62,11 +64,7 @@ const UploadForm: React.FC = () => {
         onChange={handleChange}
         placeholder="Nome"
       />
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleFileChange}
-      />
+      <input type="file" accept="image/*" onChange={handleFileChange} />
       <input
         type="number"
         name="titlesCount"
@@ -89,7 +87,7 @@ const UploadForm: React.FC = () => {
         value={formData.conference}
         onChange={handleChange}
         placeholder="conferencia"
-        />
+      />
       <button onClick={handleSubmit}>Enviar Formulário</button>
     </S.container>
   );
